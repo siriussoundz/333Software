@@ -1,0 +1,19 @@
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Local tooling and generated QA evidence
+node_modules/
+dist/
+coverage/
+qa-evidence/
+
+# Local environment files
+.env
+.env.*
+!.env.example
