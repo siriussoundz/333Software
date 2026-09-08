@@ -13,6 +13,7 @@ if (navToggle && navigation) {
     navToggle.setAttribute('aria-expanded', String(!isOpen));
     navToggle.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
     navigation.dataset.open = String(!isOpen);
+
   });
 
   navigation.addEventListener('click', (event) => {
@@ -22,7 +23,7 @@ if (navToggle && navigation) {
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
+    if (event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
       closeNavigation();
       navToggle.focus();
     }
