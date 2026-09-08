@@ -1,0 +1,3 @@
+# Preview/review deployment. Individual pages use noindex until the production domain is live.
+User-agent: *
+Allow: /

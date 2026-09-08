@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Current preview sitemap. This is not a production canonical declaration.
+  On launch, replace only the origin below with https://333software.co.uk and
+  remove the preview noindex directives before submitting it to search engines.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://siriussoundz.github.io/333Software/</loc></url>
+  <url><loc>https://siriussoundz.github.io/333Software/products.html</loc></url>
+  <url><loc>https://siriussoundz.github.io/333Software/products/volume-dawg/</loc></url>
+  <url><loc>https://siriussoundz.github.io/333Software/products/lifeos/</loc></url>
+  <url><loc>https://siriussoundz.github.io/333Software/products/audio-rd/</loc></url>
+  <url><loc>https://siriussoundz.github.io/333Software/contact.html</loc></url>
+</urlset>
