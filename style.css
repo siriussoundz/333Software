@@ -2731,3 +2731,22 @@ h1 strong {
     margin-left: -16px;
   }
 }
+
+.privacy-copy {
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.privacy-copy h2 {
+  margin-top: 42px;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  line-height: 1.2;
+}
+
+.privacy-copy h2:first-child {
+  margin-top: 0;
+}
+
+.privacy-copy h2 + p {
+  margin-top: 14px;
+}
