@@ -2357,6 +2357,35 @@ h1 strong {
   line-height: 1.55;
 }
 
+.commercial-journey {
+  margin: 31px 0 28px;
+  padding: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.11);
+  list-style: none;
+  counter-reset: commercial-step;
+}
+
+.commercial-journey li {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  align-items: start;
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  color: #d8dce2;
+  font-size: 0.94rem;
+  line-height: 1.55;
+  counter-increment: commercial-step;
+}
+
+.commercial-journey li::before {
+  color: var(--blue-bright);
+  font-size: 0.71rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  content: "0" counter(commercial-step);
+}
+
 .local-note {
   display: flex;
   align-items: flex-start;
