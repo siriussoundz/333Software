@@ -34,10 +34,16 @@ body {
   overflow-x: hidden;
   font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--white);
-  background:
-    radial-gradient(circle at 10% 55%, rgba(19, 151, 255, 0.08), transparent 28rem),
-    radial-gradient(circle at 92% 48%, rgba(239, 37, 51, 0.08), transparent 30rem),
-    var(--black);
+  background-color: var(--black);
+  background-image:
+    radial-gradient(circle at 10% 55%, rgba(19, 151, 255, 0.05), transparent 28rem),
+    radial-gradient(circle at 92% 48%, rgba(239, 37, 51, 0.06), transparent 30rem),
+    linear-gradient(rgba(5, 6, 8, 0.28), rgba(5, 6, 8, 0.4)),
+    url("images/brand/333-software-site-background.webp");
+  background-position: center, center, center, center;
+  background-size: auto, auto, auto, cover;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-attachment: scroll, scroll, scroll, fixed;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -85,36 +91,48 @@ a {
 
 .site-header {
   position: relative;
+  isolation: isolate;
   z-index: 20;
   height: var(--header-height);
   border-bottom: 1px solid var(--line);
   background-color: #050608;
-  background-image:
-    linear-gradient(90deg, rgba(5, 6, 8, 0.04) 0%, rgba(5, 6, 8, 0.12) 38%, rgba(5, 6, 8, 0.58) 70%, rgba(5, 6, 8, 0.88) 100%),
-    linear-gradient(rgba(5, 6, 8, 0.16), rgba(5, 6, 8, 0.16)),
-    url("images/brand/333-software-header-minimal-mirrored.webp");
-  background-position:
-    center,
-    center,
-    calc(50% - clamp(80px, 8.333vw, 160px)) 15%;
-  background-size: cover, cover, cover;
-  background-repeat: no-repeat, no-repeat, no-repeat;
   backdrop-filter: blur(18px);
+}
+
+.site-header::before {
+  position: absolute;
+  z-index: 0;
+  inset-block: 0;
+  left: 50%;
+  width: min(var(--shell), calc(100% - (var(--gutter) * 2)));
+  content: "";
+  transform: translateX(-50%);
+  background-image:
+    linear-gradient(90deg, rgba(5, 6, 8, 0.58) 0%, rgba(5, 6, 8, 0.84) 14%, rgba(5, 6, 8, 0.78) 31%, rgba(5, 6, 8, 0.42) 49%, rgba(5, 6, 8, 0.58) 72%, rgba(5, 6, 8, 0.88) 100%),
+    linear-gradient(rgba(5, 6, 8, 0.2), rgba(5, 6, 8, 0.2)),
+    url("images/brand/333-software-header-minimal-mirrored.webp");
+  background-position: center, center, center 15%;
+  background-size: cover, cover, max(100%, 1366px) auto;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  pointer-events: none;
 }
 
 .site-header::after {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
   z-index: 1;
+  bottom: 0;
+  left: 50%;
+  width: min(var(--shell), calc(100% - (var(--gutter) * 2)));
   height: 1px;
   content: "";
+  transform: translateX(-50%);
   background: linear-gradient(90deg, rgba(239, 37, 51, 0.58), rgba(239, 37, 51, 0.34) 40%, rgba(239, 37, 51, 0.12));
   pointer-events: none;
 }
 
 .header-inner {
+  position: relative;
+  z-index: 2;
   height: 100%;
   display: flex;
   align-items: center;
@@ -258,7 +276,7 @@ a {
     radial-gradient(ellipse at 2% 49%, rgba(19, 151, 255, 0.15), transparent 36%),
     radial-gradient(ellipse at 98% 44%, rgba(239, 37, 51, 0.14), transparent 38%),
     linear-gradient(90deg, rgba(8, 16, 27, 0.54) 0%, transparent 45%, rgba(24, 7, 10, 0.35) 100%),
-    var(--black);
+    rgba(5, 6, 8, 0.78);
 }
 
 .hero::before {
@@ -532,18 +550,28 @@ h1 strong {
   }
 }
 
+@media (min-width: 841px) and (max-width: 1365px) {
+  .site-header::before {
+    background-image:
+      linear-gradient(90deg, rgba(5, 6, 8, 0.34) 0%, rgba(5, 6, 8, 0.96) 7%, rgba(5, 6, 8, 0.96) 31%, rgba(5, 6, 8, 0.55) 46%, rgba(5, 6, 8, 0.08) 68%, rgba(5, 6, 8, 0) 100%),
+      linear-gradient(rgba(5, 6, 8, 0.16), rgba(5, 6, 8, 0.16)),
+      url("images/brand/333-software-header-minimal-mirrored.webp");
+    background-position: center, center, left 13%;
+  }
+}
+
 @media (max-width: 840px) {
   :root {
     --header-height: 76px;
     --gutter: 24px;
   }
 
-  .site-header {
+  .site-header::before {
     background-image:
-      linear-gradient(90deg, rgba(5, 6, 8, 0.12) 0%, rgba(5, 6, 8, 0.6) 100%),
-      linear-gradient(rgba(5, 6, 8, 0.3), rgba(5, 6, 8, 0.3)),
-      url("images/brand/333-software-header-brushed-steel.webp");
-    background-position: center, center, calc(50% - 20px) top;
+      radial-gradient(ellipse at 0% 50%, rgba(239, 37, 51, 0.1), transparent 45%),
+      linear-gradient(180deg, #111318 0%, #050608 100%);
+    background-position: center, center;
+    background-size: cover, cover;
   }
 
   .brand {
@@ -716,7 +744,7 @@ h1 strong {
   border-bottom: 1px solid rgba(239, 37, 51, 0.15);
   background:
     linear-gradient(90deg, rgba(19, 151, 255, 0.045), transparent 34%, transparent 66%, rgba(239, 37, 51, 0.045)),
-    #080a0e;
+    rgba(8, 10, 14, 0.88);
 }
 
 .confidence-list {
@@ -774,7 +802,7 @@ h1 strong {
   background:
     radial-gradient(circle at 5% 18%, rgba(19, 151, 255, 0.08), transparent 31rem),
     radial-gradient(circle at 94% 48%, rgba(239, 37, 51, 0.07), transparent 34rem),
-    linear-gradient(180deg, #07090d 0%, #050608 100%);
+    linear-gradient(180deg, rgba(7, 9, 13, 0.78) 0%, rgba(5, 6, 8, 0.78) 100%);
 }
 
 .products-section::before {
@@ -1314,7 +1342,7 @@ h1 strong {
   background:
     radial-gradient(circle at 4% 35%, rgba(19, 151, 255, 0.09), transparent 28rem),
     radial-gradient(circle at 94% 68%, rgba(239, 37, 51, 0.08), transparent 30rem),
-    linear-gradient(180deg, #07090d 0%, #050608 100%);
+    linear-gradient(180deg, rgba(7, 9, 13, 0.8) 0%, rgba(5, 6, 8, 0.8) 100%);
 }
 
 .home-bridge::before {
@@ -1382,7 +1410,7 @@ h1 strong {
     radial-gradient(ellipse at 2% 45%, rgba(19, 151, 255, 0.15), transparent 37%),
     radial-gradient(ellipse at 98% 48%, rgba(239, 37, 51, 0.14), transparent 38%),
     linear-gradient(90deg, rgba(8, 16, 27, 0.48), transparent 48%, rgba(24, 7, 10, 0.32)),
-    var(--black);
+    rgba(5, 6, 8, 0.78);
 }
 
 .products-hero::after {
@@ -1479,7 +1507,7 @@ h1 strong {
     linear-gradient(rgba(5, 6, 8, 0.58), rgba(5, 6, 8, 0.58)),
     url("images/brand/333-software-footer-black-steel.webp");
   background-position: center, center 50%;
-  background-size: cover, cover;
+  background-size: cover, min(var(--shell), calc(100% - (var(--gutter) * 2))) auto;
   background-repeat: no-repeat, no-repeat;
 }
 
@@ -1487,10 +1515,11 @@ h1 strong {
 .site-footer::after {
   position: absolute;
   z-index: 0;
-  right: 0;
-  left: 0;
+  left: 50%;
+  width: min(var(--shell), calc(100% - (var(--gutter) * 2)));
   height: 22px;
   content: "";
+  transform: translateX(-50%);
   background-image:
     linear-gradient(rgba(5, 6, 8, 0.12), rgba(5, 6, 8, 0.12)),
     url("images/brand/333-software-footer-black-steel.webp");
@@ -1703,7 +1732,7 @@ h1 strong {
     radial-gradient(ellipse at 2% 46%, rgba(19, 151, 255, 0.15), transparent 38%),
     radial-gradient(ellipse at 98% 50%, rgba(239, 37, 51, 0.14), transparent 39%),
     linear-gradient(90deg, rgba(8, 16, 27, 0.5), transparent 48%, rgba(24, 7, 10, 0.34)),
-    var(--black);
+    rgba(5, 6, 8, 0.78);
 }
 
 .contact-hero::after {
@@ -2060,7 +2089,7 @@ h1 strong {
     radial-gradient(ellipse at 2% 38%, rgba(19, 151, 255, 0.16), transparent 35%),
     radial-gradient(ellipse at 98% 52%, rgba(239, 37, 51, 0.16), transparent 37%),
     linear-gradient(90deg, rgba(8, 16, 27, 0.5), transparent 47%, rgba(24, 7, 10, 0.35)),
-    var(--black);
+    rgba(5, 6, 8, 0.78);
 }
 
 .volume-hero::after {
@@ -2189,14 +2218,14 @@ h1 strong {
   background:
     radial-gradient(circle at 4% 20%, rgba(19, 151, 255, 0.07), transparent 31rem),
     radial-gradient(circle at 96% 78%, rgba(239, 37, 51, 0.065), transparent 32rem),
-    #07090d;
+    rgba(7, 9, 13, 0.82);
 }
 
 .capabilities-section {
   isolation: isolate;
   background:
     radial-gradient(circle at 92% 18%, rgba(239, 37, 51, 0.07), transparent 31rem),
-    linear-gradient(180deg, #050608, #080a0e);
+    linear-gradient(180deg, rgba(5, 6, 8, 0.84), rgba(8, 10, 14, 0.84));
 }
 
 .capabilities-section::before,
@@ -2505,7 +2534,7 @@ h1 strong {
   background:
     radial-gradient(circle at 5% 30%, rgba(19, 151, 255, 0.1), transparent 30rem),
     radial-gradient(circle at 95% 68%, rgba(239, 37, 51, 0.1), transparent 31rem),
-    #050608;
+    rgba(5, 6, 8, 0.82);
 }
 
 .release-panel {
@@ -2541,7 +2570,7 @@ h1 strong {
   background:
     radial-gradient(ellipse at 2% 44%, rgba(19, 151, 255, 0.15), transparent 36%),
     radial-gradient(ellipse at 98% 50%, rgba(239, 37, 51, 0.13), transparent 38%),
-    var(--black);
+    rgba(5, 6, 8, 0.78);
 }
 
 .mini-product-layout {
