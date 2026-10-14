@@ -38,7 +38,7 @@ body {
   background-image:
     radial-gradient(circle at 10% 55%, rgba(19, 151, 255, 0.05), transparent 28rem),
     radial-gradient(circle at 92% 48%, rgba(239, 37, 51, 0.06), transparent 30rem),
-    linear-gradient(rgba(5, 6, 8, 0.28), rgba(5, 6, 8, 0.4)),
+    linear-gradient(rgba(5, 6, 8, 0.16), rgba(5, 6, 8, 0.22)),
     url("images/brand/333-software-site-background.webp");
   background-position: center, center, center, center;
   background-size: auto, auto, auto, cover;
@@ -104,16 +104,18 @@ a {
   z-index: 0;
   inset-block: 0;
   left: 50%;
-  width: min(var(--shell), calc(100% - (var(--gutter) * 2)));
+  width: min(calc(var(--shell) + clamp(32px, 4vw, 64px)), calc(100% - var(--gutter)));
   content: "";
   transform: translateX(-50%);
   background-image:
     linear-gradient(90deg, rgba(5, 6, 8, 0.58) 0%, rgba(5, 6, 8, 0.84) 14%, rgba(5, 6, 8, 0.78) 31%, rgba(5, 6, 8, 0.42) 49%, rgba(5, 6, 8, 0.58) 72%, rgba(5, 6, 8, 0.88) 100%),
     linear-gradient(rgba(5, 6, 8, 0.2), rgba(5, 6, 8, 0.2)),
     url("images/brand/333-software-header-minimal-mirrored.webp");
-  background-position: center, center, center 15%;
-  background-size: cover, cover, max(100%, 1366px) auto;
+  background-position: center, center, center center;
+  background-size: cover, cover, 100% auto;
   background-repeat: no-repeat, no-repeat, no-repeat;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
   pointer-events: none;
 }
 
@@ -276,7 +278,7 @@ a {
     radial-gradient(ellipse at 2% 49%, rgba(19, 151, 255, 0.15), transparent 36%),
     radial-gradient(ellipse at 98% 44%, rgba(239, 37, 51, 0.14), transparent 38%),
     linear-gradient(90deg, rgba(8, 16, 27, 0.54) 0%, transparent 45%, rgba(24, 7, 10, 0.35) 100%),
-    rgba(5, 6, 8, 0.78);
+    rgba(5, 6, 8, 0.68);
 }
 
 .hero::before {
@@ -556,7 +558,7 @@ h1 strong {
       linear-gradient(90deg, rgba(5, 6, 8, 0.34) 0%, rgba(5, 6, 8, 0.96) 7%, rgba(5, 6, 8, 0.96) 31%, rgba(5, 6, 8, 0.55) 46%, rgba(5, 6, 8, 0.08) 68%, rgba(5, 6, 8, 0) 100%),
       linear-gradient(rgba(5, 6, 8, 0.16), rgba(5, 6, 8, 0.16)),
       url("images/brand/333-software-header-minimal-mirrored.webp");
-    background-position: center, center, left 13%;
+    background-position: center, center, center center;
   }
 }
 
@@ -567,10 +569,13 @@ h1 strong {
   }
 
   .site-header::before {
+    width: min(var(--shell), calc(100% - (var(--gutter) * 2)));
     background-image:
       radial-gradient(ellipse at 0% 50%, rgba(239, 37, 51, 0.1), transparent 45%),
       linear-gradient(180deg, #111318 0%, #050608 100%);
     background-position: center, center;
+    -webkit-mask-image: none;
+    mask-image: none;
     background-size: cover, cover;
   }
 
@@ -802,7 +807,7 @@ h1 strong {
   background:
     radial-gradient(circle at 5% 18%, rgba(19, 151, 255, 0.08), transparent 31rem),
     radial-gradient(circle at 94% 48%, rgba(239, 37, 51, 0.07), transparent 34rem),
-    linear-gradient(180deg, rgba(7, 9, 13, 0.78) 0%, rgba(5, 6, 8, 0.78) 100%);
+    linear-gradient(180deg, rgba(7, 9, 13, 0.68) 0%, rgba(5, 6, 8, 0.68) 100%);
 }
 
 .products-section::before {
@@ -1342,7 +1347,7 @@ h1 strong {
   background:
     radial-gradient(circle at 4% 35%, rgba(19, 151, 255, 0.09), transparent 28rem),
     radial-gradient(circle at 94% 68%, rgba(239, 37, 51, 0.08), transparent 30rem),
-    linear-gradient(180deg, rgba(7, 9, 13, 0.8) 0%, rgba(5, 6, 8, 0.8) 100%);
+    linear-gradient(180deg, rgba(7, 9, 13, 0.68) 0%, rgba(5, 6, 8, 0.68) 100%);
 }
 
 .home-bridge::before {
@@ -1410,7 +1415,7 @@ h1 strong {
     radial-gradient(ellipse at 2% 45%, rgba(19, 151, 255, 0.15), transparent 37%),
     radial-gradient(ellipse at 98% 48%, rgba(239, 37, 51, 0.14), transparent 38%),
     linear-gradient(90deg, rgba(8, 16, 27, 0.48), transparent 48%, rgba(24, 7, 10, 0.32)),
-    rgba(5, 6, 8, 0.78);
+    rgba(5, 6, 8, 0.68);
 }
 
 .products-hero::after {
@@ -1418,7 +1423,7 @@ h1 strong {
   z-index: -1;
   inset: 0;
   content: "";
-  background: linear-gradient(180deg, transparent 52%, rgba(5, 6, 8, 0.82));
+  background: linear-gradient(180deg, transparent 52%, rgba(5, 6, 8, 0.72));
   pointer-events: none;
 }
 
@@ -1511,7 +1516,6 @@ h1 strong {
   background-repeat: no-repeat, no-repeat;
 }
 
-.site-footer::before,
 .site-footer::after {
   position: absolute;
   z-index: 0;
@@ -1526,11 +1530,6 @@ h1 strong {
   background-size: auto, 100% auto;
   background-repeat: no-repeat;
   pointer-events: none;
-}
-
-.site-footer::before {
-  top: 0;
-  background-position: center, center top;
 }
 
 .site-footer::after {
@@ -1649,10 +1648,6 @@ h1 strong {
     background-size: cover, auto 200%;
   }
 
-  .site-footer::before {
-    height: 20px;
-  }
-
   .site-footer::after {
     height: 22px;
   }
@@ -1732,7 +1727,7 @@ h1 strong {
     radial-gradient(ellipse at 2% 46%, rgba(19, 151, 255, 0.15), transparent 38%),
     radial-gradient(ellipse at 98% 50%, rgba(239, 37, 51, 0.14), transparent 39%),
     linear-gradient(90deg, rgba(8, 16, 27, 0.5), transparent 48%, rgba(24, 7, 10, 0.34)),
-    rgba(5, 6, 8, 0.78);
+    rgba(5, 6, 8, 0.68);
 }
 
 .contact-hero::after {
@@ -1740,7 +1735,7 @@ h1 strong {
   z-index: -1;
   inset: 0;
   content: "";
-  background: linear-gradient(180deg, transparent 55%, rgba(5, 6, 8, 0.75));
+  background: linear-gradient(180deg, transparent 55%, rgba(5, 6, 8, 0.65));
   pointer-events: none;
 }
 
@@ -2089,7 +2084,7 @@ h1 strong {
     radial-gradient(ellipse at 2% 38%, rgba(19, 151, 255, 0.16), transparent 35%),
     radial-gradient(ellipse at 98% 52%, rgba(239, 37, 51, 0.16), transparent 37%),
     linear-gradient(90deg, rgba(8, 16, 27, 0.5), transparent 47%, rgba(24, 7, 10, 0.35)),
-    rgba(5, 6, 8, 0.78);
+    rgba(5, 6, 8, 0.68);
 }
 
 .volume-hero::after {
@@ -2097,7 +2092,7 @@ h1 strong {
   z-index: -1;
   inset: 0;
   content: "";
-  background: linear-gradient(180deg, transparent 62%, rgba(5, 6, 8, 0.9));
+  background: linear-gradient(180deg, transparent 62%, rgba(5, 6, 8, 0.78));
   pointer-events: none;
 }
 
@@ -2570,7 +2565,7 @@ h1 strong {
   background:
     radial-gradient(ellipse at 2% 44%, rgba(19, 151, 255, 0.15), transparent 36%),
     radial-gradient(ellipse at 98% 50%, rgba(239, 37, 51, 0.13), transparent 38%),
-    rgba(5, 6, 8, 0.78);
+    rgba(5, 6, 8, 0.68);
 }
 
 .mini-product-layout {
